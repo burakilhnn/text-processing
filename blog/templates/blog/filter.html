@@ -1,0 +1,52 @@
+{% extends 'blog/base.html' %}
+
+
+{% block content %}
+    <div class="row">
+        <div class="col">
+            <div class="card card-body">
+
+                <form method="get">
+                    {{myFilter.form}}
+                <button class="btn btn-primary" type="submit">Search</button>
+            </form>
+
+            </div>
+        </div>
+        
+    </div>
+    <br>
+
+    <div class="row">
+        <div class="col-md">
+            <div class="card card-body">
+                <table class="table table-sm">
+                    <tr>
+                        <th>Student</th>
+                        <th>Title</th>
+                        <th>Lesson</th>
+                        <th>Season</th>
+                        <th>Keywords</th>
+                        <th>Supervisor</th>
+                        <th>File</th>
+                    </tr>
+
+                    {% for pdf in pdfs %}
+
+                    <tr>
+                        <td>{{pdf.student}}</td>
+                        <td>{{pdf.title}}</td>
+                        <td>{{pdf.lesson}}</td>
+                        <td>{{pdf.season}}</td>
+                        <td>{{pdf.keywords}}</td>
+                        <td>{{pdf.supervisor}}</td>
+                        <td><a href="/media/{{pdf.file}}">PDF</a></td>                        
+                    </tr>
+                    {% endfor %}
+
+                </table>
+            </div>
+        </div>
+    </div>
+        
+{% endblock content %}
